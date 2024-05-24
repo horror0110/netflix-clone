@@ -1,5 +1,5 @@
 "use client";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
@@ -11,6 +11,8 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
   if (!visible) {
     return null;
   }
+
+  const session = useSession();
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
@@ -23,7 +25,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             height={30}
           />
           <p className="text-white text-sm group-hover/item:underline">
-            Username
+            {session?.data?.user?.name}
           </p>
         </div>
 
