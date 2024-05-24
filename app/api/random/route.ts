@@ -1,9 +1,10 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import prismadb from "../../../lib/prismadb";
+import serverAuth from "@/lib/serverAuth";
 
 export const GET = async (req: NextRequest) => {
   try {
+    await serverAuth(req);
     const movieCount = await prismadb.movie.count();
 
     const randomIndex = Math.floor(Math.random() * movieCount);
