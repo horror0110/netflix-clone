@@ -36,7 +36,7 @@ const Home = () => {
     <>
       <InfoModal onClose={closeModal  } visible={isOpen} />
       <Billboard />
-      <div>
+      <div className="">
         <MovieList title="Trending now" data={movies} />
         <MovieList title="My List" data={favorites} />
       </div>

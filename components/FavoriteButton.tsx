@@ -4,6 +4,7 @@ import useFavorites from "@/hooks/useFavorites";
 import axios from "axios";
 import React, { useCallback, useMemo, useState } from "react";
 import { AiOutlineCheck, AiOutlinePlus } from "react-icons/ai";
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface FavoriteButtonProps {
   movieId: string;
@@ -53,11 +54,16 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <ClipLoader
+          color="red"
+          size={20}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
       ) : (
         <div
           onClick={toggleFavorites}
-          className="cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
+          className="cursor-pointer group/item w-4 h-4 md:w-10 md:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300"
         >
           <Icon className="text-white" size={25} />
         </div>
