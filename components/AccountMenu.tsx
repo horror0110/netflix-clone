@@ -12,7 +12,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
     return null;
   }
 
-  const session = useSession();
+  const { data: session, status } = useSession();
   return (
     <div className="bg-black w-56 absolute top-14 right-0 py-5 flex-col border-2 border-gray-800 flex">
       <div className="flex flex-col gap-3">
@@ -25,7 +25,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             height={30}
           />
           <p className="text-white text-sm group-hover/item:underline">
-            {session?.data?.user?.name}
+            {session?.user?.name}
           </p>
         </div>
 
